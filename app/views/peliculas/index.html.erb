@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Peliculas registradas</h1>
+
+<%= form_with url: peliculas_path, method: :get do |f| %>
+    <%= f.label :buscar  %>
+    <%= f.text_field :buscar %>
+    <%= f.submit "Buscar" %>
+<% end %>
+
+<div id="peliculas">
+  <% @peliculas.each do |pelicula| %>
+    <%= render pelicula %>
+    <p>
+      <%= link_to "Show this pelicula", pelicula %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New pelicula", new_pelicula_path %>
+<%= paginate @peliculas %>
